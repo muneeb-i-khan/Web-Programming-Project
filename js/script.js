@@ -1,17 +1,17 @@
 const hamb = document.querySelector(".hamb");
 const nav = document.querySelector(".slide");
 
-hamb.addEventListener("click", function() {
+hamb.addEventListener("click", function () {
   nav.classList.toggle("click");
 })
 
 const naruto = document.querySelector(".mid");
 
 //add 3d tilt effect to naruto on mouse move
-naruto.addEventListener("mousemove", function(e) {
+naruto.addEventListener("mousemove", function (e) {
   const x = e.clientX;
   const y = e.clientY;
-  
+
   const middleX = window.innerWidth / 2;
   const middleY = window.innerHeight / 2;
 
@@ -21,25 +21,47 @@ naruto.addEventListener("mousemove", function(e) {
   naruto.style.transform = `rotateY(${offsetX}deg) rotateX(${offsetY}deg)`;
 })
 
-naruto.addEventListener("mouseleave", function() {
+naruto.addEventListener("mouseleave", function () {
   naruto.style.transform = `rotateY(0deg) rotateX(0deg)`;
+})
+
+const btnone = document.getElementById("btnone");
+const btntwo = document.getElementById("btntwo");
+const btnthree = document.getElementById("btnthree");
+
+let tuple_naruto = [document.getElementById("bgtwo"), document.getElementById("naruto"), document.getElementById("img_naruto")];
+let tuple_sasuke = [document.getElementById("bgone"), document.getElementById("sasuke"), document.getElementById("img_sasuke")];
+let tuple_sakura = [document.getElementById("bgthree"), document.getElementById("sakura"), document.getElementById("img_sakura")];
+
+function switch_hero(enable, disable) {
+  enable.forEach(e => e.classList.add("heroactive"));
+  enable[0].classList.add("active");
+  disable.flat().forEach(e => e.classList.remove("active", "heroactive"));
+  clearInterval(hero_slideshow);
 }
-)
 
-const cards = document.querySelectorAll('.card');
-
-function removeActiveClass() {
-  cards.forEach(card => card.classList.remove('active'));
-}
-
-cards.forEach(card => {
-  card.addEventListener('mouseenter', function() {
-    removeActiveClass();
-    card.classList.add('active');
-  });
+btnone.addEventListener("click", () => {
+  switch_hero(tuple_sasuke, [tuple_naruto, tuple_sakura]);
 });
 
+btntwo.addEventListener("click", () => {
+  switch_hero(tuple_naruto, [tuple_sasuke, tuple_sakura]);
+});
 
+btnthree.addEventListener("click", () => {
+  switch_hero(tuple_sakura, [tuple_naruto, tuple_sasuke]);
+});
 
+function hero_slideshow() {
+  setInterval(() => {
+    if (tuple_naruto[0].classList.contains("active")) {
+      switch_hero(tuple_sasuke, [tuple_naruto, tuple_sakura]);
+    } else if (tuple_sasuke[0].classList.contains("active")) {
+      switch_hero(tuple_sakura, [tuple_naruto, tuple_sasuke]);
+    } else {
+      switch_hero(tuple_naruto, [tuple_sasuke, tuple_sakura]);
+    }
+  }, 5000);
+}
 
-
+hero_slideshow();
