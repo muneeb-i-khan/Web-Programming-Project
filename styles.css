@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 
+:root {
+  --accentcolor: #ea1300;
+}
+
 /* Grid Styles */
 #bento {
   display: flex;
@@ -104,7 +108,7 @@
   flex-wrap: wrap;
   background-color: #212121;
   background-image: linear-gradient(95deg, #111111, #212121);
-  color: Red;
+  color: var(--accentcolor);
 }
 
 .heroactive {
@@ -115,7 +119,7 @@
   font-size: 4em;
   font-weight: 600;
   text-transform: uppercase;
-  -webkit-text-stroke: 1px #ea1300;
+  -webkit-text-stroke: 1px var(--accentcolor);
   -webkit-text-fill-color: transparent;
 }
 

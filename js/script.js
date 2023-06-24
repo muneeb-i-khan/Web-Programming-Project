@@ -42,24 +42,30 @@ function switch_hero(enable, disable) {
 
 btnone.addEventListener("click", () => {
   switch_hero(tuple_sasuke, [tuple_naruto, tuple_sakura]);
+  document.documentElement.style.setProperty('--accentcolor', '#9D75CB');
 });
 
 btntwo.addEventListener("click", () => {
   switch_hero(tuple_naruto, [tuple_sasuke, tuple_sakura]);
+  document.documentElement.style.setProperty('--accentcolor', '#ea1300');
 });
 
 btnthree.addEventListener("click", () => {
   switch_hero(tuple_sakura, [tuple_naruto, tuple_sasuke]);
+  document.documentElement.style.setProperty('--accentcolor', '#CE7B91');
 });
 
 function hero_slideshow() {
   setInterval(() => {
     if (tuple_naruto[0].classList.contains("active")) {
-      switch_hero(tuple_sasuke, [tuple_naruto, tuple_sakura]);
-    } else if (tuple_sasuke[0].classList.contains("active")) {
       switch_hero(tuple_sakura, [tuple_naruto, tuple_sasuke]);
+      document.documentElement.style.setProperty('--accentcolor', '#CE7B91');
+    } else if (tuple_sasuke[0].classList.contains("active")) {
+      switch_hero(tuple_naruto, [tuple_sakura, tuple_sasuke]);
+      document.documentElement.style.setProperty('--accentcolor', '#ea1300');
     } else {
-      switch_hero(tuple_naruto, [tuple_sasuke, tuple_sakura]);
+      switch_hero(tuple_sasuke, [tuple_naruto, tuple_sakura]);
+      document.documentElement.style.setProperty('--accentcolor', '#9D75CB');
     }
   }, 5000);
 }

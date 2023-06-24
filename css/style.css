@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 
+:root {
+  --accentcolor: #ea1300;
+}
+
 /*google fonts*/
 
 * {
@@ -144,7 +148,7 @@ header .action button i {
 }
 
 .mid:hover{
-  border: 1px solid rgba(255, 0, 0, 0.326);
+  border: 1px solid var(--accentcolor);
   border-radius: 40px;
 }
 
@@ -152,7 +156,7 @@ header .action button i {
   font-size: 20em;
   font-weight: 600;
   text-transform: uppercase;
-  -webkit-text-stroke: 3px #ea1300;
+  -webkit-text-stroke: 3px var(--accentcolor);
   -webkit-text-fill-color: transparent;
 
   position: absolute;
@@ -196,7 +200,7 @@ header .action button i {
 .hero .bottom a {
   font-size: 1.1em;
   letter-spacing: 1.2px;
-  color: #ea1300;
+  color: var(--accentcolor);
 }
 
 .hero .bottom a:hover {text-decoration: underline;}
@@ -223,7 +227,7 @@ header .action button i {
 }
 
 .hero .left-side a:hover {
-  background: red;
+  background: var(--accentcolor);
   color: #fff;
 }
 
@@ -255,7 +259,7 @@ header .action button i {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: red;
+  background: var(--accentcolor);
   color: #fff;
   font-weight: bold;
 }
