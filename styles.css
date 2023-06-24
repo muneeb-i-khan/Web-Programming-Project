@@ -23,13 +23,14 @@
 }
 
 .bento-item {
-  background-color: #f2f2f2;
-  background-image: url(img/naruto.jpg);
+  background-color: #373737;
+  background-image: url(assets/team2.jpg);
   background-size: cover;
   background-position: center;
   border-radius: 20px;
   transition: all 0.3s ease;
   z-index: 1;
+  border: 1px solid var(--accentcolor);
   animation: transformscalereverse 0.5s ease forwards;
 }
 
