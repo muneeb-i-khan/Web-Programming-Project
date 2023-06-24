@@ -1,0 +1,171 @@
+
+#project{
+  font-family: 'Muli', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  background-color: #212121;
+  background-image: linear-gradient(95deg, #111111, #212121);
+  margin-top: -3px;
+}
+
+.aud{
+  display: none;
+}
+.container-pro{
+  display: flex;
+  width: 90vw;
+}
+
+.card {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  border-radius: 50px;
+  color: #fff;
+  cursor: pointer;
+  flex: 0.5;
+  margin: 10px;
+  position: relative;
+  transition: all 700ms ease-in;
+}
+
+.card h3 {
+  font-size: 24px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
+}
+
+.card.active {
+  flex: 5;
+  box-shadow: black 0px 0px 10px;
+}
+
+.card.active h3 {
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s;
+}
+
+#team {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #212121;
+  background-image: linear-gradient(95deg, #111111, #212121);
+color: Red;
+}  
+#team> .container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.team-member {
+  position: relative;
+  overflow: hidden;
+  margin-right: 20px; 
+}
+
+.team-member:last-child {
+  margin-right: 0; 
+}
+
+.image-wrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 30px;
+  transition: transform 0.3s ease;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.overlay-content {
+  color: #fff;
+}
+
+.team-member:hover .image-wrapper img {
+  transform: scale(1.2);
+}
+
+.team-member:hover .overlay {
+  opacity: 1;
+}
+
+
+#contact > .contact-container{
+  display: flex;
+  color: white;
+  padding-bottom: 28px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #212121;
+  background-image: linear-gradient(95deg, #111111, #212121);
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 100vw;
+  }
+
+  .team-member {
+    margin-right: 0;
+    margin-bottom: 20px;
+    margin-top: 100px;
+    width: 75px;
+    height: 75px;
+  }
+
+  .image-wrapper img {
+    width: 75px;
+    height: 75px;
+    border-radius: 10px;
+
+  }
+
+  .overlay {
+    font-size: 8px;
+    width: 75px;
+    height: 75px;
+  }
+
+  .panel:nth-of-type(4),
+  .panel:nth-of-type(5) {
+    display: none;
+  }
+}
+  
+  
