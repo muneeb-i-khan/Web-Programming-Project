@@ -140,11 +140,15 @@ header .action button i {
 }
 
 .hero .mid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   max-width: 95%;
   margin: 0 auto;
   height: 600px;
   position: relative;
+  transition: transform 0.3s ease;
 }
 
 .mid:hover{
@@ -158,23 +162,14 @@ header .action button i {
   text-transform: uppercase;
   -webkit-text-stroke: 3px var(--accentcolor);
   -webkit-text-fill-color: transparent;
-
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   z-index: 1;
 }
 
 .hero .mid img {
   width: 500px;
-
   filter: drop-shadow(0 15px 15px #00000080);
-
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-5deg);
+  transform: rotate(-5deg);
   z-index: 2;
   animation: slide 1s ease;
 }
@@ -182,11 +177,11 @@ header .action button i {
 @keyframes slide {
   10% {
     opacity: 0;
-    transform: translateY(-100px) translate(-50%, -50%) rotate(-5deg);
+    transform: translateY(-100px) rotate(-5deg);
   }
   100% {
     opacity: 1;
-    transform: translateY(0px) translate(-50%, -50%) rotate(-5deg);
+    transform: translateY(0px) rotate(-5deg);
   }
 }
 
