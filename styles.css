@@ -19,7 +19,6 @@
   gap: 10px;
   width: 1000px;
   height: 1000px;
-  border-radius: 10px;
 }
 
 .bento-item {
@@ -27,32 +26,25 @@
   background-size: cover;
   background-position: center;
   border-radius: 20px;
+  transform: scale(1) translate(0%, 0%);
   transition: all 0.3s ease;
   z-index: 1;
-  animation: transformscalereverse 0.5s ease forwards;
 }
 
 .bento-item:hover {
-  transform: scale(1.1) translateX(5%) translateY(-5%);
+  transform: scale(1.1) translate(5%, -5%);
+  animation: transformscale 0.5s ease normal;
   z-index: 2;
-  animation: transformscale 0.5s ease forwards;
 }
 
 @keyframes transformscale {
   0% {
-    transform: translateX(0) translateY(0) scale(1);
+    transform: scale(1) translate(0%, 0%);
+    z-index: 1;
   }
   100% {
-    transform: translateX(5%) translateY(-5%) scale(1.1);
-  }
-}
-
-@keyframes transformscalereverse {
-  0% {
-    transform: translateX(5%) translateY(-5%) scale(1.1);
-  }
-  100% {
-    transform: translateX(0) translateY(0) scale(1);
+    transform: scale(1.1) translate(5%, -5%);
+    z-index: 2;
   }
 }
 
@@ -60,7 +52,6 @@
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   background-image: url(assets/grid1.jpg);
-
 }
 
 .bento-item-2 {
