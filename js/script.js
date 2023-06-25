@@ -5,6 +5,33 @@ hamb.addEventListener("click", function () {
   nav.classList.toggle("click");
 })
 
+function Timer(fn, t) {
+  var timerObj = setInterval(fn, t);
+
+  this.stop = function() {
+      if (timerObj) {
+          clearInterval(timerObj);
+          timerObj = null;
+      }
+      return this;
+  }
+
+  // start timer using current settings (if it's not already running)
+  this.start = function() {
+      if (!timerObj) {
+          this.stop();
+          timerObj = setInterval(fn, t);
+      }
+      return this;
+  }
+
+  // start with new or original interval, stop current interval
+  this.reset = function(newT = t) {
+      t = newT;
+      return this.stop().start();
+  }
+}
+
 const naruto = document.querySelector(".mid");
 
 //add 3d tilt effect to naruto on mouse move
@@ -33,13 +60,6 @@ let tuple_naruto = [document.getElementById("bgtwo"), document.getElementById("n
 let tuple_sasuke = [document.getElementById("bgone"), document.getElementById("sasuke"), document.getElementById("img_sasuke")];
 let tuple_sakura = [document.getElementById("bgthree"), document.getElementById("sakura"), document.getElementById("img_sakura")];
 
-function switch_hero(enable, disable) {
-  enable.forEach(e => e.classList.add("heroactive"));
-  enable[0].classList.add("active");
-  disable.flat().forEach(e => e.classList.remove("active", "heroactive"));
-  clearInterval(hero_slideshow);
-}
-
 btnone.addEventListener("click", () => {
   switch_hero(tuple_sasuke, [tuple_naruto, tuple_sakura]);
   document.documentElement.style.setProperty('--accentcolor', '#9D75CB');
@@ -55,19 +75,22 @@ btnthree.addEventListener("click", () => {
   document.documentElement.style.setProperty('--accentcolor', '#CE7B91');
 });
 
-function hero_slideshow() {
-  setInterval(() => {
-    if (tuple_naruto[0].classList.contains("active")) {
-      switch_hero(tuple_sakura, [tuple_naruto, tuple_sasuke]);
-      document.documentElement.style.setProperty('--accentcolor', '#CE7B91');
-    } else if (tuple_sasuke[0].classList.contains("active")) {
-      switch_hero(tuple_naruto, [tuple_sakura, tuple_sasuke]);
-      document.documentElement.style.setProperty('--accentcolor', '#ea1300');
-    } else {
-      switch_hero(tuple_sasuke, [tuple_naruto, tuple_sakura]);
-      document.documentElement.style.setProperty('--accentcolor', '#9D75CB');
-    }
-  }, 5000);
-}
+var timer = new Timer(function() {
+  if (tuple_naruto[0].classList.contains("active")) {
+    switch_hero(tuple_sakura, [tuple_naruto, tuple_sasuke]);
+    document.documentElement.style.setProperty('--accentcolor', '#CE7B91');
+  } else if (tuple_sasuke[0].classList.contains("active")) {
+    switch_hero(tuple_naruto, [tuple_sakura, tuple_sasuke]);
+    document.documentElement.style.setProperty('--accentcolor', '#ea1300');
+  } else {
+    switch_hero(tuple_sasuke, [tuple_naruto, tuple_sakura]);
+    document.documentElement.style.setProperty('--accentcolor', '#9D75CB');
+  }
+}, 5000);
 
-hero_slideshow();
+function switch_hero(enable, disable) {
+  enable.forEach(e => e.classList.add("heroactive"));
+  enable[0].classList.add("active");
+  disable.flat().forEach(e => e.classList.remove("active", "heroactive"));
+  timer.reset();
+}
