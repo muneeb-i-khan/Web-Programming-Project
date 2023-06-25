@@ -96,8 +96,8 @@
   background-image: url(assets/grid8.jpg);
 }
 
-.aud{
-  display: none;
+#play-btn {
+  color: white;
 }
 
 #team {

@@ -94,3 +94,18 @@ function switch_hero(enable, disable) {
   disable.flat().forEach(e => e.classList.remove("active", "heroactive"));
   timer.reset();
 }
+
+const play = document.getElementById("play-btn");
+const icon = document.querySelector(".fas");
+play.addEventListener("click", () => {
+  // check if music is playing
+  if (document.getElementById("despair").paused) {
+    document.getElementById("despair").play();
+    icon.classList.remove("fa-play");
+    icon.classList.add("fa-pause");
+  } else {
+    document.getElementById("despair").pause();
+    icon.classList.remove("fa-pause");
+    icon.classList.add("fa-play");
+  }
+});
